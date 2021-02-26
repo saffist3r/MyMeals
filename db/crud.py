@@ -8,7 +8,8 @@ from . import models, schemas
 # Read
 
 def get_meals(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(models.Meal).offset(skip).limit(limit).all()
+    result = db.query(models.Meal).offset(skip).limit(limit).all()
+    return result
 
 
 # Create
