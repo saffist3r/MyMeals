@@ -1,10 +1,9 @@
-from fastapi import FastAPI
-from api.api import api_router
+from flask import Flask, jsonify
+from api.endpoints import meal
+app = Flask(__name__)
+app.register_blueprint(meal, url_prefix='/meals')
 
-app = FastAPI(
-    title="MyMeals - Backend",
-    description="The backend for MyMeals",
-    version="1.0.0",
-)
-app.include_router(api_router, prefix="/api")
 
+@app.route("/")
+def main():
+    return jsonify('MyMeals - API')
